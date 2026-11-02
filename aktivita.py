@@ -64,7 +64,16 @@ def show_img(orig_name):
         plt.title(orig_name)
         plt.show()
     except FileNotFoundError:
-        print("file " + path + " doesn't exist")
+
+        path = "imgs/" + name + ".png"
+        try:
+            img = plt.imread(path)
+            plt.imshow(img)
+            plt.axis("off")
+            plt.title(orig_name)
+            plt.show()
+        except FileNotFoundError:
+            print("file " + path + " doesn't exist")
 
 while True:
     guess = input("Adivina un par (separados por una coma):\n")
